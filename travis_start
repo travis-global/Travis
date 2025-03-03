@@ -1,0 +1,13 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+echo "🗜️ Compressing files..."
+tar -czf encrypted_files.tar.gz ~/storage/shared/ebooks
+
+echo "🔐 Encrypting files..."
+openssl enc -aes-256-cbc -salt -pbkdf2 -in encrypted_files.tar.gz -out encrypted_files.tar.gz.aes -pass pass:"YOUR_SECRET_PASSWORD"
+rm encrypted_files.tar.gz
+
+echo "🌍 Uploading file..."
+curl --upload-file encrypted_files.tar.gz.aes https://transfer.sh/encrypted_files.tar.gz.aes > upload_link.txt
+
+echo "✅ Upload Complete! Download Link: $(cat upload_link.txt)"

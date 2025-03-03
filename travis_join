@@ -1,0 +1,14 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+read -p "🔗 Enter download link: " LINK
+curl -o encrypted_files.tar.gz.aes "$LINK"
+
+echo "🔑 Decrypting file..."
+openssl enc -aes-256-cbc -d -salt -pbkdf2 -in encrypted_files.tar.gz.aes -out decrypted_files.tar.gz -pass pass:"YOUR_SECRET_PASSWORD"
+rm encrypted_files.tar.gz.aes
+
+echo "📂 Extracting files..."
+tar -xzf decrypted_files.tar.gz -C ~/storage/shared/
+rm decrypted_files.tar.gz
+
+echo "✅ Success! Files restored."
