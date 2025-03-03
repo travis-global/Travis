@@ -9,7 +9,7 @@ pkg install openssl curl tar -y
 mkdir -p /data/data/com.termux/files/usr/bin/
 
 # Move scripts to bin folder
-cp travis /data/data/com.termux/files/usr/bin/
+cp travix /data/data/com.termux/files/usr/bin/
 cp travis_start /data/data/com.termux/files/usr/bin/
 cp travis_join /data/data/com.termux/files/usr/bin/
 
