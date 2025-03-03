@@ -1,0 +1,14 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+echo "📡 Travis Secure Transfer"
+echo "1️⃣ Start Connection"
+echo "2️⃣ Join Connection"
+read -p "Choose an option: " OPTION
+
+if [[ "$OPTION" == "1" ]]; then
+    travis_start
+elif [[ "$OPTION" == "2" ]]; then
+    travis_join
+else
+    echo "❌ Invalid Option!"
+fi
